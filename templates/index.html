@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code O Clock</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/su3.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"> <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"> <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        width: 100%; /* Ensure full-width content */
+    }
+
+        body {
+            margin:0;
+            font-family: 'Poppins', sans-serif; /* Updated font-family */
+            background-color: #000; /* Ensure background is black */
+            color: #fff; /* Ensure text is white */
+            padding-top: 80.5px; /* Adjust padding to avoid content being hidden behind fixed navbar */
+        }
+        header {
+    padding-top: 15px; /* Adjust the padding to increase/decrease the space at the top */
+    padding-bottom: 15px; /* Adjust the padding to increase/decrease the space at the bottom */
+}
+
+.navbar-nav .nav-item .nav-link {
+    
+    padding: 8px 10px; /* Adjust link padding for spacing */
+    font-size: 16px; /* Adjust the font size for readability */
+}
+
+.logo img {
+    max-height: 60px; /* Adjust the height to fit well within the header */
+}
+
+@media (max-width: 767px) {
+    header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .logo img {
+        max-height: 50px; /* Adjust height for smaller screens */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        padding: 8px 10px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+}
+
+        .navbar {
+            font-size: 1.15rem; /* Increase navbar size by 15% */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Align items to the center */
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background 0.3s;
+            font-weight: bold; /* Make text bold */
+            text-transform: uppercase; /* Make text uppercase */
+            letter-spacing: 0.1em; /* Add letter spacing */
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(15, 2, 2, 0.499);
+        }
+
+        .nav-contact {
+            border: 2px solid #fff; /* Add border */
+            padding: 5px 10px; /* Add padding */
+            transition: background 0.3s, color 0.3s; /* Add transition for background and color */
+        }
+
+        .nav-contact:hover {
+            background-color: #fff; /* Change background color on hover */
+            color: #000; /* Change text color on hover */
+        }
+
+        .hero {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+             /* To ensure the overlay and content stay within bounds */
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+        }
+
+        .hero .content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-family: 'Roboto', sans-serif; /* Updated font-family */
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .btn-warning {
+            background-color: #f0ad4e;
+            color: #fff;
+            padding: 8px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .btn-warning:hover {
+            background-color: #ec971f;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+        }
+
+        /* Additional Styles for the Events Section */
+        .events {
+            background-color: #000; /* Ensure background is black */
+            color: #fff; /* Ensure text is white */
+        }
+
+        .event-item {
+            display: block;
+            position: relative;
+            
+            margin-bottom: 30px;
+            text-decoration: none; /* Ensure links don't have underline */
+            background: #1a1a1a;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-item .event-img {
+            width: 100%;
+            height: 200px; /* Set a fixed height for all images */
+            object-fit: cover; /* Ensure the images maintain their aspect ratio */
+            transition: transform 0.3s ease-in-out;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .event-item .event-text {
+            padding: 20px; /* Add some padding to the text */
+            text-align: center;
+            color: #fff; /* Ensure text is white */
+        }
+
+        .event-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .event-item:hover .event-img {
+            transform: scale(1.1);
+        }
+
+        /* Specific rule to make Streamlined Event text white */
+        .streamlined-event-text {
+            color: #fff; /* Set text color to white */
+        }
+
+        /* Styles for the Contact Section */
+        .contact-section {
+            background-color: #000;
+            color: #fff;
+            padding: 50px 0;
+        }
+
+        .contact-section h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .contact-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f0ad4e;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .contact-section .form-control,
+        .contact-section .btn-submit {
+            border-radius: 0;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .contact-section .form-control::placeholder {
+            color: #ccc;
+        }
+
+        .contact-section .btn-submit {
+            background-color: #f0ad4e; /* Match the background color */
+            border: none; /* Remove border */
+            padding: 10px 20px; /* Add padding */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 0.1em; /* Add letter spacing */
+            font-weight: bold; /* Bold text */
+            transition: background 0.3s, transform 0.3s; /* Add transition for hover effect */
+        }
+
+        .contact-section .btn-submit:hover {
+            background-color: #ec971f; /* Match the hover color */
+            transform: scale(1.05);
+        }
+
+        .contact-section .form-check-label {
+            color: #ccc;
+        }
+
+        .contact-section .map {
+            margin-top: 20px;
+        }
+
+        .contact-info p i {
+            margin-right: 5px;
+        }
+
+        /* Styles for the Footer */
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center; /* Center align text in the footer */
+        }
+
+        .footer h3,
+        .footer h4 {
+            color: #fff;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .fab {
+            margin-right: 15px;
+        }
+
+        .footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer .footer-content .social-links {
+            display: flex;
+            justify-content: center; /* Center align social links */
+            width: 100%; /* Ensure full width for proper centering */
+            margin-top: 20px; /* Add spacing between sections */
+        }
+
+        .footer .footer-content .social-links a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer .footer-content .social-links a:hover {
+            color: #f0ad4e;
+        }
+
+        .footer .footer-content .menu,
+        .footer .footer-content .contact-info {
+            flex: 1;
+            text-align: center; /* Center align menu and contact info */
+        }
+
+        .footer .footer-content .menu ul,
+        .footer .footer-content .contact-info address {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer .footer-content .menu ul {
+            margin-top: 15px;
+        }
+
+        .footer .footer-content .menu ul li,
+        .footer .footer-content .contact-info address p {
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-content h4 {
+            margin-bottom: 10px;
+        }
+
+        .footer .footer-content .logo-title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center align logo title */
+            width: 100%;
+            text-align: center; /* Center align text */
+        }
+
+        @media (max-width: 768px) {
+            .footer .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer .footer-content > div {
+                margin-bottom: 20px;
+            }
+
+            .footer .footer-content .social-links {
+                justify-content: center;
+            }
+
+            .footer .footer-content .menu ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer .footer-content .menu ul li {
+                width: auto;
+            }
+
+            .footer {
+                padding-bottom: 20px; /* Ensure there is no extra black part */
+            }
+        }
+
+        /* Chief Guest Spotlight Section Styles */
+        .chief-guest-section {
+            padding: 20px;
+            background-color: #000; /* Ensure background is black */
+            color: #fff; /* Ensure text is white */
+            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+        }
+
+        .chief-guest-section h2 {
+            font-size: 2.5em;
+            font-family: 'Roboto', sans-serif; /* Updated font-family */
+            margin-bottom: 20px;
+            color: #fff; /* Text color set to white */
+            position: relative; /* Required for the line */
+        }
+
+        .chief-guest-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f0ad4e;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .guest-item {
+            position: relative;
+            
+            text-align: center;
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .guest-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .guest-photo {
+            width: 100%;
+            height: 400px; /* Adjust height to ensure the entire image is displayed */
+            object-fit: cover; /* Ensure the images maintain their aspect ratio */
+            transition: transform 0.3s ease-in-out;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .guest-item:hover .guest-photo {
+            transform: scale(1.1);
+        }
+
+        .guest-text {
+            padding: 20px; /* Add some padding to the text */
+            color: #fff; /* Ensure text is white */
+        }
+
+        .guest-text h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .guest-text p {
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .guest-text a {
+            color: #f0ad4e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .guest-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Gallery Section Styles */
+        .gallery-section {
+            padding: 50px 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-family: 'Roboto', sans-serif; /* Updated font-family */
+            margin-bottom: 40px;
+            color: #fff;
+            position: relative; /* Required for the line */
+        }
+
+        .gallery-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f0ad4e;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .gallery-item {
+            
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Styles for mobile navigation menu */
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 80px; /* Adjust to align with your header */
+                right: 0;
+                width: 200px; /* Adjust the width as needed */
+                background-color: #333;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+                display: none; /* Initially hide the menu */
+            }
+
+            .navbar-collapse.show {
+                display: block; /* Show the menu when toggler is clicked */
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Add the line under other section headers */
+        .events h2,
+        .empowering-coders h2,
+        .chief-guest-section h2,
+        .gallery-section h2,
+        .contact-section h2 {
+            position: relative; /* Required for the line */
+        }
+
+        .events h2::after,
+        .empowering-coders h2::after,
+        .chief-guest-section h2::after,
+        .gallery-section h2::after,
+        .contact-section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: #f0ad4e;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        #home {
+    position: relative;
+    height: 100vh; /* Make sure the section is the full height of the viewport */
+     /* Hide overflow if the video exceeds the section */
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the entire section */
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Place the video behind the content */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+    z-index: 0; /* Place the overlay above the video */
+}
+
+.container {
+    position: relative;
+    z-index: 1; /* Place the content above the overlay and video */
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    height: auto; /* Adjust as per your need */
+    
+}
+
+.hero-video {
+    width: 100%;
+    height: auto;
+}
+
+.bottom-buttons {
+    position: absolute;
+    bottom: 10px; /* Adjust the bottom spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.bottom-buttons .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #f0ad4e;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.bottom-buttons .btn:hover {
+    background-color: #ec971f;
+    transform: scale(1.05);
+}
+
+.event-dates {
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff; /* Change color as needed */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+
+
+
+.bttn{
+    position: relative;
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+    background-color: #202231;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    transition: width .5s, border-radius .5s;
+}
+
+.text{
+    position: absolute;
+    left: 35%;
+}
+
+.icon{
+    opacity: 0;
+}
+
+.bttn:focus{
+    width: 60px;
+    background-color: #44c08a;
+    border-radius: 50%;
+}
+
+.bttn:focus .text{
+    opacity: 0;
+}
+
+.bttn:focus .icon{
+    opacity: 1;
+}
+
+    body {
+        padding-top: 80px;
+    }
+    .form-message {
+        display: none;
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .form-message.success {
+        color: green;
+    }
+    .form-message.error {
+        color: red;
+    }
+
+
+    .whatsapp-icon, .telegram-icon {
+        position: fixed;
+        bottom: 20px;
+        z-index: 1000;
+    }
+    
+    .whatsapp-icon {
+        right: 80px; /* Adjust the position so that both icons do not overlap */
+    }
+
+    .telegram-icon {
+        right: 20px; /* Position Telegram closer to the right */
+    }
+
+    .whatsapp-icon img, .telegram-icon img {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .whatsapp-icon img:hover, .telegram-icon img:hover {
+        transform: scale(1.1);
+    }
+
+    
+    .icon-container {
+        position: fixed;
+        bottom: 10px; /* Adjusted to reduce gap from the bottom */
+        right: 10px;  /* Adjusted to reduce gap from the right edge */
+        z-index: 1000;
+        display: flex;
+        flex-direction: column; /* Arrange icons vertically */
+        gap: 10px; /* Space between the icons */
+    }
+
+    .icon-container a img {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .icon-container a img:hover {
+        transform: scale(1.1);
+    }
+     
+        
+        .center-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full height */
+        }
+        
+        /* Default: Stacked one after another */
+        .chief-guest-section .row {
+            display: block;
+        }
+        
+        .chief-guest-section .col-lg-6 {
+            margin-bottom: 30px;
+        }
+        
+        /* Desktop: Show side by side on larger screens */
+        @media (min-width: 768px) {
+            .chief-guest-section .row {
+                display: flex;
+                justify-content: center;
+            }
+        
+            .chief-guest-section .col-lg-6 {
+                flex: 1;
+                max-width: 50%;
+            }
+        }
+        
+    </style>
+   <body>
+    <header class="bg-dark text-white fixed-top">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center py-2">
+                <div class="logo">
+                    <img src="static/su3.png" alt="Code O Clock Logo" class="img-fluid">
+                </div>
+                <h4 style="text-align:left;">CODE O CLOCK</h4>
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#events">Events</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-contact" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>  
+
+    <div class="video-container position-relative">
+        <video class="hero-video w-100" autoplay muted loop>
+            <source src="static/coc.mp4" type="video/mp4">
+        </video>
+        <div class="overlay-content position-absolute top-0 w-100 h-100 d-flex justify-content-center align-items-center">
+            <!-- Optional: Content that overlays the video -->
+        </div>
+    </div>
+    
+    <section class="flip-countdown-section">
+        <div class="container"><br>
+            <h2 class="text-uppercase text-center mb-4">Countdown</h2>
+        </div>
+        <div class="countdown">
+          <div class="time-section" id="hours">
+            <div class="time-group">
+              <div class="time-segment">
+                <div class="segment-display">
+                  <div class="segment-display__top"></div>
+                  <div class="segment-display__bottom"></div>
+                  <div class="segment-overlay">
+                    <div class="segment-overlay__top"></div>
+                    <div class="segment-overlay__bottom"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="time-segment">
+                <div class="segment-display">
+                  <div class="segment-display__top"></div>
+                  <div class="segment-display__bottom"></div>
+                  <div class="segment-overlay">
+                    <div class="segment-overlay__top"></div>
+                    <div class="segment-overlay__bottom"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>Hours</p>
+          </div>
+      
+          <div class="time-section" id="minutes">
+            <div class="time-group">
+              <div class="time-segment">
+                <div class="segment-display">
+                  <div class="segment-display__top"></div>
+                  <div class="segment-display__bottom"></div>
+                  <div class="segment-overlay">
+                    <div class="segment-overlay__top"></div>
+                    <div class="segment-overlay__bottom"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="time-segment">
+                <div class="segment-display">
+                  <div class="segment-display__top"></div>
+                  <div class="segment-display__bottom"></div>
+                  <div class="segment-overlay">
+                    <div class="segment-overlay__top"></div>
+                    <div class="segment-overlay__bottom"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>Minutes</p>
+          </div>
+      
+          <div class="time-section" id="seconds">
+            <div class="time-group">
+              <div class="time-segment">
+                <div class="segment-display">
+                  <div class="segment-display__top"></div>
+                  <div class="segment-display__bottom"></div>
+                  <div class="segment-overlay">
+                    <div class="segment-overlay__top"></div>
+                    <div class="segment-overlay__bottom"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="time-segment">
+                <div class="segment-display">
+                  <div class="segment-display__top"></div>
+                  <div class="segment-display__bottom"></div>
+                  <div class="segment-overlay">
+                    <div class="segment-overlay__top"></div>
+                    <div class="segment-overlay__bottom"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p>Seconds</p>
+          </div>
+        </div>
+      
+        <style>
+          .flip-countdown-section * {
+            box-sizing: border-box;
+          }
+      
+          .revealing-heading {
+            font-size: 40px;
+            text-align: center;
+            animation: reveal 2s ease-in-out infinite;
+          }
+      
+          @keyframes reveal {
+            0%, 100% {
+              opacity: 0;
+              transform: translateY(-20px);
+            }
+            50% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+      
+          .countdown {
+            margin: 100px auto;
+            width: 50%;
+            display: flex;
+            gap: 30px;
+            font-family: sans-serif;
+          }
+      
+          .time-section {
+            text-align: center;
+            font-size: 30px;
+          }
+      
+          .time-group {
+            display: flex;
+            gap: 10px;
+          }
+      
+          .time-segment {
+            display: block;
+            font-size: 100px;
+            font-weight: 900;
+            width: 100px;
+          }
+      
+          .segment-display {
+            position: relative;
+            height: 100%;
+          }
+      
+          .segment-display__top,
+          .segment-display__bottom {
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+            height: 50%;
+            position: relative;
+          }
+      
+          .segment-display__top {
+            line-height: 1.5;
+            color: #eee;
+            background-color: #111;
+          }
+      
+          .segment-display__bottom {
+            line-height: 0;
+            color: #fff;
+            background-color: #333;
+          }
+      
+          .segment-overlay {
+            position: absolute;
+            top: 0;
+            perspective: 400px;
+            height: 100%;
+            width: 100px;
+          }
+      
+          .segment-overlay__top,
+          .segment-overlay__bottom {
+            position: absolute;
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+            height: 50%;
+          }
+      
+          .segment-overlay__top {
+            top: 0;
+            line-height: 1.5;
+            color: #fff;
+            background-color: #111;
+            transform-origin: bottom;
+          }
+      
+          .segment-overlay__bottom {
+            bottom: 0;
+            line-height: 0;
+            color: #eee;
+            background-color: #333;
+            border-top: 2px solid black;
+            transform-origin: top;
+          }
+      
+          .segment-overlay.flip .segment-overlay__top {
+            animation: flip-top 0.8s linear;
+          }
+      
+          .segment-overlay.flip .segment-overlay__bottom {
+            animation: flip-bottom 0.8s linear;
+          }
+      
+          @keyframes flip-top {
+            0% {
+              transform: rotateX(0deg);
+            }
+            50%,
+            100% {
+              transform: rotateX(-90deg);
+            }
+          }
+      
+          @keyframes flip-bottom {
+            0%,
+            50% {
+              transform: rotateX(90deg);
+            }
+            100% {
+              transform: rotateX(0deg);
+            }
+          }
+        </style>
+      
+      <script>
+        // Get the current date and set the time to 3:00 PM today
+        const now = new Date();
+        const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 15, 0, 0); // 3:00 PM today
+      
+        // Add 24 hours (in milliseconds) to the target date
+        targetDate.setHours(targetDate.getHours() + 24);
+      
+        function getTimeSegmentElements(segmentElement) {
+          const segmentDisplay = segmentElement.querySelector('.segment-display');
+          const segmentDisplayTop = segmentDisplay.querySelector('.segment-display__top');
+          const segmentDisplayBottom = segmentDisplay.querySelector('.segment-display__bottom');
+          const segmentOverlay = segmentDisplay.querySelector('.segment-overlay');
+          const segmentOverlayTop = segmentOverlay.querySelector('.segment-overlay__top');
+          const segmentOverlayBottom = segmentOverlay.querySelector('.segment-overlay__bottom');
+      
+          return {
+            segmentDisplayTop,
+            segmentDisplayBottom,
+            segmentOverlay,
+            segmentOverlayTop,
+            segmentOverlayBottom,
+          };
+        }
+      
+        function updateSegmentValues(displayElement, overlayElement, value) {
+          displayElement.textContent = value;
+          overlayElement.textContent = value;
+        }
+      
+        function updateTimeSegment(segmentElement, timeValue) {
+          const segmentElements = getTimeSegmentElements(segmentElement);
+      
+          if (parseInt(segmentElements.segmentDisplayTop.textContent, 10) === timeValue) {
+            return;
+          }
+      
+          segmentElements.segmentOverlay.classList.add('flip');
+      
+          updateSegmentValues(segmentElements.segmentDisplayTop, segmentElements.segmentOverlayBottom, timeValue);
+      
+          function finishAnimation() {
+            segmentElements.segmentOverlay.classList.remove('flip');
+            updateSegmentValues(segmentElements.segmentDisplayBottom, segmentElements.segmentOverlayTop, timeValue);
+            this.removeEventListener('animationend', finishAnimation);
+          }
+      
+          segmentElements.segmentOverlay.addEventListener('animationend', finishAnimation);
+        }
+      
+        function updateTimeSection(sectionID, timeValue) {
+          const firstNumber = Math.floor(timeValue / 10) || 0;
+          const secondNumber = timeValue % 10 || 0;
+          const sectionElement = document.getElementById(sectionID);
+          const timeSegments = sectionElement.querySelectorAll('.time-segment');
+      
+          updateTimeSegment(timeSegments[0], firstNumber);
+          updateTimeSegment(timeSegments[1], secondNumber);
+        }
+      
+        function getTimeRemaining(targetDateTime) {
+          const nowTime = Date.now();
+          const complete = nowTime >= targetDateTime;
+      
+          if (complete) {
+            return {
+              complete,
+              seconds: 0,
+              minutes: 0,
+              hours: 0,
+            };
+          }
+      
+          const secondsRemaining = Math.floor((targetDateTime - nowTime) / 1000);
+          const hours = Math.floor(secondsRemaining / 3600);
+          const minutes = Math.floor((secondsRemaining % 3600) / 60);
+          const seconds = secondsRemaining % 60;
+      
+          return {
+            complete,
+            seconds,
+            minutes,
+            hours,
+          };
+        }
+      
+        function updateCountdown() {
+          const timeRemaining = getTimeRemaining(targetDate.getTime());
+      
+          if (timeRemaining.complete) {
+            clearInterval(countdownInterval);
+            return;
+          }
+      
+          updateTimeSection('seconds', timeRemaining.seconds);
+          updateTimeSection('minutes', timeRemaining.minutes);
+          updateTimeSection('hours', timeRemaining.hours);
+        }
+      
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+      </script>
+      
+      </section>
+      
+      <section id="brochure" style="padding: 50px 0; background-color: #000000;">
+        <div class="container">
+          <h2 style="text-align: center; margin-bottom: 30px;">PROBLEM STATEMENT - Click to download</h2>
+          <div style="text-align: center;">
+            <a href="static/Code-O-Clock Problem Statements.pdf" download>
+              <img src="static/1.png" alt="Problem Statement" style="max-width: 100%; height: auto; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+            </a>
+          </div>
+        </div>
+    </section>
+
+    <section id="about" class="empowering-coders py-5" data-aos="fade-left"data-aos-delay="200">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                    <h2 class="text-uppercase" style="text-align: center;">Code O Clock</h2>
+                    <h3>Join the coding revolution</h3>
+                    <p>18/10/24 - 19/10/24</p>
+                    <p>
+                        Code O Clock is the flagship event organized by the Department of Artificial Intelligence and Data Science. This dynamic platform is designed to bring together coding enthusiasts, developers, and innovators for a series of exciting and intellectually stimulating events. From coding workshops and hackathons to programming competitions, Code O Clock offers a unique opportunity for participants to enhance their skills, collaborate with peers, and solve real-world challenges.
+                    </p>
+                </div>
+                <div class="col-lg-6 col-md-12 text-center">
+                    <img src="static/su2.jpeg" alt="Code Image" class="img-fluid mb-3"> <!-- Update the image path -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="title-sponsor" class="title-sponsor-section py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">Our Title Sponsor</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 text-center" data-aos="flip-right" data-aos-delay="100">
+                    <div class="sponsor-item">
+                        <img class="sponsor-logo img-fluid mx-auto d-block mb-4" src="static/tsp.jpg" alt="Title Sponsor Logo">
+                        <div class="sponsor-text">
+                            <p>Coimbatore Most Trusted IT Service Provider <a href="https://www.palies.in/" target="_blank">palies.in</a>.</p>
+                            <p>Palies IT Services is the customer centric service provider located in Coimbatore, India and offering various IT services since 2013. Along with five years of experience in hardware and software support, Mr.Saravanan an energetic professional started making his dream come true, being the stepping stone of Palies IT services. “Success stories are not just written in hands but also carved in reading minds”. Palies IT services consider the agreed projects not only as a duty. We have one of the best Computer Service in Coimbatore</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="title-sponsor" class="title-sponsor-section py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">Co-Sponsored By</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 text-center" data-aos="flip-right" data-aos-delay="100">
+                    <div class="sponsor-item">
+                        <img class="sponsor-logo img-fluid mx-auto d-block mb-4" src="static/csp.png" alt="Title Sponsor Logo">
+                        <div class="sponsor-text">
+                            <p> Visit <a href="https://www.kovaimobilesservicecenter.com/" target="_blank">kovaimobiles</a>.</p>
+                            <p>Kovai Mobiles - The Service Centre, founded in 1999 in Coimbatore, Tamil Nadu, specializes in expert mobile repair and maintenance services. With over 24 years of industry experience, they are recognized for their professionalism and commitment to quality, serving a wide range of mobile brands and models. Known for their reliable and efficient solutions, Kovai Mobiles has built a strong reputation as a trusted service provider in the region...
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <section id="about" class="empowering-coders py-5" data-aos="fade-left">
+        <p>
+            <section id="gallery" class="gallery-section py-5">
+                <div class="container">
+                    <h2 class="text-uppercase text-center mb-4">GUIDELINES</h2>
+                  
+            <p style="align-items: center;text-align: center;">A Team can consist of 2 to 4 members.</p>
+            <p style="align-items: center;text-align: center;">Team members can be of any year/department but must belong to the same college and ID Card is mandatory</p>
+            <p style="align-items: center;text-align: center;">The teams must build a working model for the problem statement given on the day of Hackathon.</p>
+            <p style="align-items: center;text-align: center;">1st day - Lunch and Dinner|2nd day - Breakfast would be provided and resting halls would be provided</p>
+            <p style="align-items: center;text-align: center;">Teams will be selected on first come first serve basis</p>
+            <p style="align-items: center;text-align: center;">Decisions made by the panel of judges are final</p>
+            <p style="align-items: center;text-align: center;">Participants can enjoy Wi-Fi, Food, Music, Fun Games and much more throughout 24hours.</p>
+                </div>
+            </section>
+        </p>
+    </section>
+
+    <section id="about" class="empowering-coders py-5" data-aos="fade-left" data-aos-delay="200">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                    <img src="static/AI.jpg" alt="Code Image" class="img-fluid"> 
+                </div>
+                <div class="col-lg-6 col-md-12 text-center text-md-left">
+                    <h2 class="text-uppercase " style="text-align: center;">AI DAY</h2>
+                    <p>Welcome to AI Day</p>
+                    <p>⭐AI Day 2024 is a premier event dedicated to the exploration and celebration of artificial intelligence and its transformative impact across various industries. This one-day event will bring together leading experts, researchers, and practitioners in the field of AI to share their insights, experiences, and visions for the future. Attendees will have the unique opportunity to engage with thought leaders, network with professionals, and gain a deeper understanding of the latest advancements in AI technologies.</p>
+                    <p>⭐Video Presentation<br>
+                        Immerse yourself in AI-generated video content, where machine learning algorithms create stunning visuals and narratives. Witness how AI is reshaping the future of multimedia and storytelling.</p>
+                        
+                        <p>⭐AI Tools<br>
+                        Explore cutting-edge AI tools that are driving innovation across industries. Get hands-on experience with technologies that are transforming the way we work and create.</p><br></b>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+        <br>
+        <br>
+        <section id="about" class="empowering-coders py-5" data-aos="fade-left"data-aos-delay="200">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                        <h2 class="text-uppercase" style="text-align: center;">college</h2>
+                        <p>The V. Rangasamy Naidu Educational Trust devoted to the cause of promoting technical and scientific literacy, established Coimbatore Institute of Technology (CIT) in Coimbatore, Tamil Nadu, South India in 1956. CIT is one of the most reputed and prestigious educational institutions in India. The Institute, backed by world-class research and development, over the years attained autonomous status in 1987.</p>
+
+                    </div>
+                    <div class="col-lg-6 col-md-12 text-center">
+                        <img src="static/college.jpg" alt="Code Image" class="img-fluid mb-3"> <!-- Update the image path -->
+                    </div>
+                </div>
+            </div>
+        </section>
+              
+    <section id="spotlight" class="chief-guest-section py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">Our Chief Guests</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 text-center" data-aos="flip-left" data-aos-delay="100">
+                    <div class="guest-item">
+                        <img class="guest-photo img-fluid mx-auto d-block mb-4" src="static/bastin.jpg"  alt="Siddarth, the Product Guy">
+                        <div class="guest-text">
+                            <h4>BASTIN ROBINS</h4>
+                            <p>With extensive experience in data infrastructure and decision-making, the Director of Data at ELSA enables seamless, scalable solutions. They drive product growth, optimize user experience, and collaborate across teams to transform data into valuable insights for millions of users.</p>
+                            <a href="https://www.linkedin.com/in/bastinrobin/" target="_blank" class="linkedin-icon">
+                                <img src="static/linkedin2.png" alt="LinkedIn">
+                            </a>                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-8 text-center" data-aos="flip-left" data-aos-delay="100">
+                    <div class="guest-item">
+                        <img class="guest-photo img-fluid mx-auto d-block mb-4" src="static/siddarth.jpg" alt="Siddarth, the Product Guy">
+                        <div class="guest-text">
+                            <h4>SIDDARTH KENGADARAN</h4>
+                            <p>He has spent over ten years immersed in product development, navigating the exciting journey from initial spark to successful launch and beyond. He has worked across diverse industries, gaining a deep understanding of what it takes to build products that users truly love.</p>
+                            <a href="https://www.linkedin.com/in/siddarthkengadaran/" target="_blank" class="linkedin-icon">
+                                <img src="static/linkedin2.png" alt="LinkedIn">
+                            </a>                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="brochure" style="padding: 50px 0; background-color: #000000;">
+        <div class="container">
+          <h2 style="text-align: center; margin-bottom: 30px;">BROCHURE</h2>
+          <div style="text-align: center;">
+            <a href="static/Code O Clock Brochure.pdf" download>
+              <img src="static/bro1.png" alt="Brochure" style="max-width: 100%; height: auto; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+              <img src="static/bro2.png" alt="Brochure" style="max-width: 100%; height: auto; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+            </a>
+          </div>
+        </div>
+      </section>
+    <section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">speakers</h2>
+          
+<div class="center-page">
+    {% include 'speakers.html' %}
+</div>
+
+</div>
+</section>       
+
+    <section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">placard</h2>
+          
+<div class="center-page">
+    {% include 'poster.html' %}
+</div>
+
+</div>
+</section>
+    <section id="gallery" class="gallery-section py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">Gallery</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                <center>
+            
+                {% include 'gallary.html' %}
+        
+            </center>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </section>
+    
+
+    <section id="events" class="events py-5">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">Our Events</h2>
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-sm-6 col-md-4 mb-4" data-aos="flip-left">
+                    <div class="event-item">
+                        <img src="static/su1.jpeg" alt="Intellina" class="img-fluid event-img rounded">
+                        <div class="event-text mt-3">
+                            <h4>INTELLINA</h4>
+                            <p>Our Flagship Event</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="event-item">
+                        <img src="static/su5.jpeg" alt="GPTathon" class="img-fluid event-img rounded">
+                        <div class="event-text mt-3">
+                            <h4>GPTATHON</h4>
+                            <p>Snatch With GPT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="event-item">
+                        <img src="static/su4.jpeg" alt="AI Workshop" class="img-fluid event-img rounded">
+                        <div class="event-text mt-3">
+                            <h4>AI WORKSHOP</h4>
+                            <p>Harnessing AI for Tomorrow's Challenges</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact-section py-5" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-uppercase text-center mb-4">We're here to assist you</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <form id="contactForm" action="/send_email" method="post">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address *</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="email@website.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone number *</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+91" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="consent" name="consent" required>
+                            <label class="form-check-label" for="consent">I allow this website to store my submission so they can respond to my inquiry.</label>
+                        </div>
+                        <center><button class="bttn">
+                            <span class="text">Submit</span>
+                            <i class="fa fa-check icon"></i>
+                        </button></center>
+                    </form>
+                </div>
+    
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="map embed-responsive embed-responsive-16by9 mb-4">
+                        <iframe class="embed-responsive-item"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.137273494053!2d77.02470567504561!3d11.028325889136212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba858979f85136b%3A0xdd9ca28d3c37cf8a!2sCoimbatore%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1725185237630!5m2!1sen!2sin" 
+                            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="contact-info">
+                        <p><strong>Get in touch</strong></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:codeoclock.cit@gmail.com">codeoclock.cit@gmail.com</a></p>
+                        <p><strong>Location</strong></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Avinashi Rd, Civil Aerodrome Post, Coimbatore, Tamil Nadu 641014</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-5" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4 mb-md-0">
+                    <h3>CODE O CLOCK</h3>
+                    <div class="social-links mt-3">
+                        <a href="https://www.linkedin.com/in/code-o-clock-53070b271" class="text-white me-3" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/codeoclock_cit" class="text-white" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4 mb-md-0">
+                    <h4>Menu</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#events" class="text-white">Events</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4">
+                    <h4>Contact</h4>
+                    <address class="mb-0">
+                        <strong>CIT</strong><br>
+                        Avinashi Rd<br>
+                        Civil Aerodrome Post<br>
+                        Coimbatore<br>
+                        Tamil Nadu 641014<br>
+                        <a href="mailto:codeoclock.cit@gmail.com" class="text-white">codeoclock.cit@gmail.com</a>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS (Animate On Scroll) library
+        AOS.init();
+    
+        // Form submission using AJAX
+        $(document).ready(function () {
+            $('#contactForm').on('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+    
+                var formData = $(this).serialize(); // Serialize form data
+    
+                $.ajax({
+                    url: '/send_email',
+                    type: 'POST',
+                    data: formData,
+                    success: function () {
+                        $('#contactForm')[0].reset(); // Clear the form
+                        window.location.reload(); // Refresh the page
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+<div class="icon-container">
+    <!-- WhatsApp Icon -->
+    <a href="https://chat.whatsapp.com/GlBil9iWS41Daq5fXoHGzO" target="_blank">
+        <img src="static/wp.png" alt="WhatsApp" style="width:50px;height:50px;">
+    </a>
+
+    <!-- Telegram Icon -->
+    <a href="https://t.me/codeoclock24" target="_blank">
+        <img src="static/telegram.png" alt="Telegram" style="width:40px;height:40px;">
+        </a>
+</div>
+    </body>
+    </html>
